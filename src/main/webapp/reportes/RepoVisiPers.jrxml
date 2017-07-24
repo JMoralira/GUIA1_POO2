@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RepoVisiPers" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a8986a7c-ff74-4403-934a-c2624a9bcffc">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[
+select visi.codi_visi, pers.NOMB_PERS, luga_acce.NOMB_LUGA_ACCE, unid_orga.NOMB_UNID_ORGA, visi.FECH_HORA_ENTR_VISI, visi.FECH_HORA_SALI_VISI
+from visi, usua, pers, unid_orga, tipo_docu, gafe_iden, luga_acce, pers_hist
+where visi.CODI_USUA=usua.CODI_USUA and usua.CODI_PERS=pers.CODI_PERS and visi.CODI_UNID_ORGA_VISI=unid_orga.CODI_UNID_ORGA and
+visi.CODI_TIPO_DOCU=tipo_docu.CODI_TIPO_DOCU and visi.CODI_GAFE=gafe_iden.CODI_GAFE_IDEN and
+visi.CODI_LUGA_SALI=luga_acce.CODI_LUGA_ACCE and pers_hist.CODI_PERS= visi.CODI_PERS_VISI]]>
+	</queryString>
+	<field name="codi_visi" class="java.lang.Long">
+		<fieldDescription><![CDATA[CODIGO DE LA VISITA]]></fieldDescription>
+	</field>
+	<field name="NOMB_PERS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMB_LUGA_ACCE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMB_UNID_ORGA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FECH_HORA_ENTR_VISI" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[FECHA Y HORA DE LA ENTRADA DE VISITA]]></fieldDescription>
+	</field>
+	<field name="FECH_HORA_SALI_VISI" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[FECHA Y HORA DE LA SALIDA DE VISITA]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="82801bdd-efb0-4c99-bc47-e25568cf4272"/>
+				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="SubTitle" x="134" y="48" width="157" height="22" uuid="d4e04783-8727-45ff-ac9b-064252f810ee"/>
+				<text><![CDATA[POO2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="0" y="15" width="263" height="33" uuid="2ce19da9-b756-4af6-ac5a-1ec540a7c929"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[GUIA 01 ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="111" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-2" y="110" width="555" height="1" uuid="a82303f7-d786-45d7-a52b-e176bc7e8d2a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="SubTitle" x="0" y="31" width="368" height="35" uuid="a9dd8ee4-9aea-4ee6-9769-efb74135fd9e"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Reporte de visitas por persona]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="64" height="20" uuid="2ae854a4-5d15-4475-9bd8-f2b4076d2fee"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="90" width="92" height="20" uuid="9810cbce-aa0d-4eb0-95ee-c21c5129ec10"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Persona]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="90" width="92" height="20" uuid="65361657-3ce8-43e5-a350-0b826e76b786"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Lugar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="90" width="95" height="20" uuid="be8c04ec-ec55-40fc-a0d7-ab1701d73507"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Unidad Organizativa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="90" width="100" height="20" uuid="d40d1a21-2f8d-4224-9513-1603886cd987"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[FeyHo ENTRADA ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="443" y="90" width="109" height="20" uuid="36175cbd-0604-423e-bf40-abee0b93f564"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[FeyHo SALIDA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="20" width="555" height="1" uuid="57f93a63-bba9-42a0-b1b2-b80ddf745a61"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="64" height="20" uuid="5b7d5ae5-6499-4912-ae1f-dd8ecf65b95e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{codi_visi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="0" width="92" height="20" uuid="d82a65aa-00d0-4a06-aa29-178bbdb86351"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NOMB_PERS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="0" width="92" height="20" uuid="1bd1e4c5-a0c9-43f7-882e-8f5e408a2209"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NOMB_LUGA_ACCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="0" width="100" height="20" uuid="ac4758c9-d626-4b82-a2cc-d3157bf99c39"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FECH_HORA_ENTR_VISI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="443" y="0" width="109" height="20" uuid="0b26819e-2818-4633-b4b1-0f09170313d8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FECH_HORA_SALI_VISI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="248" y="0" width="95" height="20" uuid="ef9db991-6111-464c-b40e-aad4be4967b2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NOMB_UNID_ORGA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="6b0b7741-dded-41bc-8b71-55c31b750821"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="82c89478-6d8f-4654-899b-55b291573e42"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="8fbbea67-a886-4f3c-afea-f1052ce637ad"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="f2173dd7-9433-4edf-87e2-11370a1f7100"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

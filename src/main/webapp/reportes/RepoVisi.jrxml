@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RepoVisi" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d09b7214-7688-4e75-b211-7d0327059d55">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[select visi.codi_visi, pers.NOMB_PERS,pers_hist.NOMB_PERS, unid_orga.NOMB_UNID_ORGA, tipo_docu.NOMB_TIPO_DOCU,
+ gafe_iden.NOMB_GAFE_IDEN, luga_acce.NOMB_LUGA_ACCE, luga_acce.NOMB_LUGA_ACCE,  visi.MOTI_VISI
+from visi, usua, pers, unid_orga, tipo_docu, gafe_iden, luga_acce, pers_hist
+where visi.CODI_USUA=usua.CODI_USUA and usua.CODI_PERS=pers.CODI_PERS and visi.CODI_UNID_ORGA_VISI=unid_orga.CODI_UNID_ORGA and
+visi.CODI_TIPO_DOCU=tipo_docu.CODI_TIPO_DOCU and visi.CODI_GAFE=gafe_iden.CODI_GAFE_IDEN and visi.CODI_LUGA_SALI=luga_acce.CODI_LUGA_ACCE and pers_hist.CODI_PERS= visi.CODI_PERS_VISI]]>
+	</queryString>
+	<field name="codi_visi" class="java.lang.Long">
+		<fieldDescription><![CDATA[CODIGO DE LA VISITA]]></fieldDescription>
+	</field>
+	<field name="NOMB_PERS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMB_UNID_ORGA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMB_TIPO_DOCU" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMB_GAFE_IDEN" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMB_LUGA_ACCE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MOTI_VISI" class="java.lang.String">
+		<fieldDescription><![CDATA[MOTIVO DE LA VISITA]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="331756c4-a692-40b7-a711-0adcff0fbde1"/>
+				<imageExpression><![CDATA["leaf_banner_red.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="cb6ffc5e-74be-4cb0-830c-dafb85823dc1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[GUIA 01 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="7837e68c-f341-42e4-9b22-2b87ef3ab439"/>
+				<text><![CDATA[POO2]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="120" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-2" y="119" width="555" height="1" uuid="137b09a6-1540-4818-8b01-8a1195787a33"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="99" width="42" height="20" uuid="97c8d9c4-d578-461e-9c2a-fc59633c5f90"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="99" width="59" height="20" uuid="ba506a08-e062-4461-b221-b0023a260183"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="99" width="116" height="20" uuid="3c9dbc72-3de1-44ea-82c7-d98da263873f"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Unidad Organizativa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="217" y="99" width="95" height="20" uuid="09c077f9-019a-4f2d-b803-1323d6a9af43"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tipo Documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="99" width="79" height="20" uuid="fe1e97b1-7f92-43c6-a6d1-aface7b09ab0"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Gafete]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="99" width="79" height="20" uuid="40f5ad01-57c3-4b98-8675-1250bc31e456"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Motivo Visita]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="99" width="79" height="20" uuid="8551d848-fd08-42e0-9709-d205b50ceed7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Lugar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="-2" y="17" width="500" height="35" uuid="638e6929-58b8-4995-8ef2-309c2543c937"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Reporte de visitas por unidad organizativa]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="20" width="555" height="1" uuid="8170ee9a-8128-411a-b579-7377e6d37d7b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="42" height="20" uuid="3d53b23c-e41f-425d-941f-14c8ea484002"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{codi_visi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="42" y="0" width="59" height="20" uuid="aa4b22bc-8155-4c54-af5a-01a20f984bfa"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NOMB_PERS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="217" y="0" width="95" height="20" uuid="ae2cbb13-c6c5-4dc6-9273-a67fc0c0d83f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NOMB_TIPO_DOCU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="312" y="0" width="79" height="20" uuid="8435ca52-c43a-4bf7-8657-679e2e59701e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NOMB_GAFE_IDEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="0" width="79" height="20" uuid="8b5ce47f-c47e-49fc-b964-aa80584382e1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{MOTI_VISI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="0" width="79" height="20" uuid="9144978a-445f-4c95-b045-a4c1f30c6a82"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NOMB_LUGA_ACCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="0" width="116" height="20" uuid="aaa4f5e7-ba0d-48b3-98fb-aa88a9744649"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NOMB_UNID_ORGA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1ec3dca7-8b26-433a-8aca-34ed763dc70d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="f8e69f74-c625-4b8e-9496-cc5ccda7f44d"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="1daa0025-86df-40e8-93a4-9bd5ad493734"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="ec76e399-a58a-482d-b634-1872eb58a3a7"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
